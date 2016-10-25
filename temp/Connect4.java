@@ -11,12 +11,20 @@ public class Connect4 {
             {' ', ' ', ' ', ' ', ' ', ' ', ' '},
             {' ', ' ', ' ', ' ', ' ', ' ', ' '},
             {' ', ' ', ' ', ' ', ' ', ' ', ' '},
-            {' ', ' ', ' ', ' ', ' ', ' ', ' '},
+            {' ', ' ', ' ', ' ', 'd', 'd', 'd'},
     };
     Scanner s = new Scanner(System.in);
 
     public Connect4() {
     }
+
+    public static void main(String[] args) {
+        Connect4 c = new Connect4();
+        int n = c.putPiece(3,'d');
+        System.out.println(c.checkAlignment(n,4));
+    }
+
+
 
     public char[][] getBoard() {
         char[][] currentBoard = new char[6][7];
@@ -43,9 +51,10 @@ public class Connect4 {
         for (int k = 0; k < board.length-3; k++) { //vertical win
             if (
                     board[k][col] != ' ' &&
-                    board[k][col] == board[k + 1][col] &&
-                    board[k][col] == board[k + 2][col] &&
-                    board[k][col] == board[k + 3][col]
+                            board[k][col] == board[k + 1][col] &&
+                            board[k][col] == board[k + 2][col] &&
+                            board[k][col] == board[k + 3][col]
+                            && (board[k][col] == 'd' || board[k][col] == 'D')
                     ) {
                 return board[k][col];
             }
@@ -54,9 +63,10 @@ public class Connect4 {
         for (int k = 0; k < board[0].length-3; k++) { //horizontal win
             if (
                     board[row][k] != ' ' &&
-                    board[row][k] == board[row][k+1] &&
-                    board[row][k] == board[row][k+2] &&
-                    board[row][k] == board[row][k+3]) {
+                            board[row][k] == board[row][k+1] &&
+                            board[row][k] == board[row][k+2] &&
+                            board[row][k] == board[row][k+3]
+                            && (board[row][k] == 'd' || board[row][k] == 'D')) {
                 return board[row][k];
             }
         }
@@ -73,9 +83,10 @@ public class Connect4 {
         for (int k = 0; k < diagonal1.size()-3; k++) {
             if (
                     diagonal1.get(k) != ' ' &&
-                    diagonal1.get(k) == diagonal1.get(k+1) &&
-                    diagonal1.get(k) == diagonal1.get(k+2) &&
-                    diagonal1.get(k) == diagonal1.get(k+3)) {
+                            diagonal1.get(k) == diagonal1.get(k+1) &&
+                            diagonal1.get(k) == diagonal1.get(k+2) &&
+                            diagonal1.get(k) == diagonal1.get(k+3)
+                            && (diagonal1.get(k) == 'd' || diagonal1.get(k) == 'D')) {
                 return diagonal1.get(k);
             }
         }
@@ -90,9 +101,10 @@ public class Connect4 {
         for (int k = 0; k < diagonal2.size()-3; k++) {
             if (
                     diagonal2.get(k) != ' ' &&
-                    diagonal2.get(k) == diagonal2.get(k+1) &&
-                    diagonal2.get(k) == diagonal2.get(k+2) &&
-                    diagonal2.get(k) == diagonal2.get(k+3)) {
+                            diagonal2.get(k) == diagonal2.get(k+1) &&
+                            diagonal2.get(k) == diagonal2.get(k+2) &&
+                            diagonal2.get(k) == diagonal2.get(k+3)
+                            && (diagonal2.get(k) == 'd' || diagonal2.get(k) == 'D')) {
                 return diagonal2.get(k);
             }
         }
